@@ -77,4 +77,15 @@ RorBlog::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+
+  # config/environments/production.rb
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['ROR_BLOG2_S3_BUCKET_NAME'],
+      :access_key_id => ENV['ROR_BLOG2_AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['ROR_BLOG2_AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
